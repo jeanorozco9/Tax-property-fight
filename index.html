@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaxFight - Reduce Your Property Taxes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">TaxFight</a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#signup" class="btn btn-outline">Log In</a></li>
+        <li><a href="#signup" class="btn btn-primary">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">86% Success Rate · No Upfront Cost</div>
+      <h1>Stop Overpaying<br />on Property Taxes</h1>
+      <p class="hero-sub">We fight your property tax assessment so you don't have to. If we don't save you money, you pay nothing.</p>
+      <form class="hero-form" onsubmit="handleSignup(event)">
+        <input type="text" placeholder="Enter your property address" class="hero-input" />
+        <button type="submit" class="btn btn-primary btn-lg">Check My Savings</button>
+      </form>
+      <p class="hero-note">Free to start · Takes 3 minutes · No obligation</p>
+    </div>
+    <div class="hero-image">
+      <div class="hero-card">
+        <div class="card-label">Average Annual Savings</div>
+        <div class="card-value">$774</div>
+        <div class="card-sub">per customer</div>
+        <div class="card-divider"></div>
+        <div class="card-stat">
+          <span class="stat-num">1M+</span>
+          <span class="stat-label">Appeals Filed</span>
+        </div>
+        <div class="card-stat">
+          <span class="stat-num">86%</span>
+          <span class="stat-label">Success Rate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container">
+      <span>Trusted by homeowners in</span>
+      <div class="states">
+        <span>California</span>
+        <span>Texas</span>
+        <span>Florida</span>
+        <span>New York</span>
+        <span>Illinois</span>
+        <span>Georgia</span>
+        <span>Washington</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>We handle everything from start to finish — no hassle, no paperwork, no hearings for you.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">1</div>
+          <h3>Sign Up in 3 Minutes</h3>
+          <p>Enter your property address and we'll instantly evaluate your assessment for savings opportunities.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-icon">2</div>
+          <h3>We Build Your Case</h3>
+          <p>Our AI analyzes comparable sales, market data, and assessment errors to build the strongest possible appeal.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-icon">3</div>
+          <h3>We Fight for You</h3>
+          <p>Local experts handle all paperwork, filings, hearings, and negotiations with your county assessor.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-icon">4</div>
+          <h3>You Save Money</h3>
+          <p>We confirm your victory and monitor your property taxes every year so savings keep coming.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose TaxFight</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">⚖️</div>
+          <h3>Local Expert Representation</h3>
+          <p>Dedicated local tax consultants who know your county's rules, assessors, and appeal board inside and out.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🤖</div>
+          <h3>AI-Powered Evidence</h3>
+          <p>Our proprietary technology analyzes massive datasets to find every angle to reduce your assessment.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📋</div>
+          <h3>End-to-End Management</h3>
+          <p>We handle every step — filing, hearings, negotiations — you never have to lift a finger.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔄</div>
+          <h3>Annual Monitoring</h3>
+          <p>We automatically review and appeal your assessment every year, so you never overpay again.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💰</div>
+          <h3>No Win, No Fee</h3>
+          <p>You pay nothing unless we save you money. Zero upfront cost, zero risk.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>Real-Time Status Tracking</h3>
+          <p>Follow your appeal's progress at every stage from your personal dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="results-content">
+        <div class="results-text">
+          <h2>Real Savings for Real Homeowners</h2>
+          <p>Over 74% of homeowners are worried about rising property taxes — but only 22% have ever appealed. We're changing that.</p>
+          <ul class="results-list">
+            <li><strong>$774</strong> average annual savings per customer</li>
+            <li><strong>86%</strong> success rate on filed appeals</li>
+            <li><strong>1 million+</strong> appeals filed nationwide</li>
+            <li>Available in <strong>7 states</strong> with more coming</li>
+          </ul>
+          <a href="#signup" class="btn btn-primary">See If I Qualify</a>
+        </div>
+        <div class="testimonials">
+          <div class="testimonial">
+            <p>"TaxFight saved me $1,200 last year. I did nothing — they handled everything. Already signed up for this year."</p>
+            <div class="testimonial-author">— Maria T., Houston TX</div>
+          </div>
+          <div class="testimonial">
+            <p>"I was skeptical at first, but they actually got my assessment reduced. Took about 4 months and I paid nothing upfront."</p>
+            <div class="testimonial-author">— David K., Atlanta GA</div>
+          </div>
+          <div class="testimonial">
+            <p>"The process was completely hands-off for me. They filed everything and I just got a check when it was done."</p>
+            <div class="testimonial-author">— Sandra L., Miami FL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple, Risk-Free Pricing</h2>
+        <p>You only pay if we save you money — and only a percentage of what we save you.</p>
+      </div>
+      <div class="pricing-cards">
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <h3>Success Fee</h3>
+          <div class="price">25%</div>
+          <div class="price-label">of your annual savings</div>
+          <ul class="pricing-features">
+            <li>✓ No upfront cost</li>
+            <li>✓ Full end-to-end management</li>
+            <li>✓ AI + local expert representation</li>
+            <li>✓ Annual monitoring included</li>
+            <li>✓ No savings = no charge</li>
+          </ul>
+          <a href="#signup" class="btn btn-primary btn-block">Get Started Free</a>
+          <p class="pricing-note">35% success fee applies in CA, NY, and FL</p>
+        </div>
+      </div>
+      <div class="pricing-example">
+        <h4>Example</h4>
+        <p>If your property tax bill is <strong>$6,000</strong> and we reduce it to <strong>$5,000</strong>, our fee is <strong>$250</strong> (25% of $1,000 savings). You keep $750.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How long does a property tax appeal take?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Most appeals take between 4–12 months depending on your county. We handle everything during this time and keep you updated throughout the process.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What states do you currently operate in?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We currently offer full-service representation in California, Texas, Florida, New York, Illinois, Georgia, and Washington. We're expanding to more states soon.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if my appeal is unsuccessful?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>If we don't save you money, you owe us nothing. Our success fee only applies when we successfully reduce your tax bill.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do I have to attend any hearings?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. Our local experts attend all hearings and handle all negotiations on your behalf. You don't have to do anything after signing up.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Will appealing my taxes affect my home's value?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. A property tax appeal challenges your tax assessment, not your property's market value. It has no impact on your home's sale price or equity.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How do I know if I have a good case?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sign up and we'll evaluate your assessment for free. We analyze your property data, comparable sales, and any errors in your assessment to determine if you have an opportunity to save.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="signup">
+    <div class="container">
+      <h2>Ready to Stop Overpaying?</h2>
+      <p>Join thousands of homeowners who've already saved on their property taxes. It only takes 3 minutes to get started.</p>
+      <form class="cta-form" onsubmit="handleSignup(event)">
+        <input type="text" placeholder="Your property address" class="hero-input" />
+        <input type="email" placeholder="Your email address" class="hero-input" />
+        <button type="submit" class="btn btn-white btn-lg">Check My Savings →</button>
+      </form>
+      <p class="cta-note">No credit card required · Free evaluation · Cancel anytime</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">TaxFight</div>
+          <p>Fighting unfair property taxes for homeowners across America.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Property Tax Appeal</a></li>
+            <li><a href="#">Tax Bill Management</a></li>
+            <li><a href="#">Exemption Filing</a></li>
+            <li><a href="#">Annual Monitoring</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TaxFight. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
