@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Savings Estimate · TaxFight</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="results.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">TaxFight</a>
+      <ul class="nav-links">
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="checkout.html" class="btn btn-primary">Get Started — $29.99</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <h2>Analyzing your property...</h2>
+      <div class="loading-steps">
+        <div class="loading-step" id="lstep1">
+          <span class="lstep-icon">⏳</span> Looking up property records
+        </div>
+        <div class="loading-step" id="lstep2">
+          <span class="lstep-icon">⏳</span> Comparing nearby properties
+        </div>
+        <div class="loading-step" id="lstep3">
+          <span class="lstep-icon">⏳</span> Calculating potential savings
+        </div>
+        <div class="loading-step" id="lstep4">
+          <span class="lstep-icon">⏳</span> Building your report
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS PAGE (hidden until loading done) -->
+  <div id="results-page" class="results-page" style="display:none;">
+
+    <!-- SAVINGS HERO -->
+    <section class="savings-hero">
+      <div class="container">
+        <div class="savings-header">
+          <div class="savings-badge">Your Property Analysis</div>
+          <h1>Great news — you may be <span class="highlight">overpaying</span></h1>
+          <p id="address-display" class="address-display"></p>
+        </div>
+
+        <div class="savings-summary-grid">
+          <div class="savings-card main-savings">
+            <div class="savings-card-label">Estimated Annual Savings</div>
+            <div class="savings-card-value" id="savings-amount">$0</div>
+            <div class="savings-card-sub">if we win your appeal</div>
+            <div class="savings-card-note">Our fee is only $29.99 — you keep the rest</div>
+          </div>
+          <div class="savings-card">
+            <div class="savings-card-label">Current Assessed Value</div>
+            <div class="savings-card-value small" id="current-value">$0</div>
+            <div class="savings-card-sub">per county records</div>
+          </div>
+          <div class="savings-card">
+            <div class="savings-card-label">Estimated Fair Value</div>
+            <div class="savings-card-value small green" id="fair-value">$0</div>
+            <div class="savings-card-sub">based on comparable sales</div>
+          </div>
+          <div class="savings-card">
+            <div class="savings-card-label">Overassessment</div>
+            <div class="savings-card-value small red" id="overassessment">$0</div>
+            <div class="savings-card-sub">above fair market value</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPEAL STRENGTH -->
+    <section class="appeal-section">
+      <div class="container">
+        <div class="appeal-grid">
+
+          <!-- LEFT: Analysis -->
+          <div class="appeal-left">
+            <h2>Your Appeal Strength</h2>
+            <div class="strength-meter">
+              <div class="strength-bar">
+                <div class="strength-fill" id="strength-fill"></div>
+              </div>
+              <div class="strength-label" id="strength-label">Strong</div>
+            </div>
+
+            <div class="analysis-items">
+              <div class="analysis-item">
+                <div class="analysis-icon check">✓</div>
+                <div class="analysis-text">
+                  <strong>Assessment exceeds market value</strong>
+                  <span>Your property is assessed higher than recent comparable sales in your area.</span>
+                </div>
+              </div>
+              <div class="analysis-item">
+                <div class="analysis-icon check">✓</div>
+                <div class="analysis-text">
+                  <strong>Comparable properties assessed lower</strong>
+                  <span>Similar homes nearby have lower assessments, supporting an unequal appraisal claim.</span>
+                </div>
+              </div>
+              <div class="analysis-item">
+                <div class="analysis-icon check">✓</div>
+                <div class="analysis-text">
+                  <strong>No prior appeal on record</strong>
+                  <span>Your property has never been appealed — you may have been overpaying for years.</span>
+                </div>
+              </div>
+              <div class="analysis-item" id="exemption-item">
+                <div class="analysis-icon warn">!</div>
+                <div class="analysis-text">
+                  <strong>Possible exemptions not applied</strong>
+                  <span>You may qualify for homestead or other exemptions that could reduce your bill further.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="comparable-section">
+              <h3>Comparable Properties Nearby</h3>
+              <div class="comp-table">
+                <div class="comp-header">
+                  <span>Address</span>
+                  <span>Sq Ft</span>
+                  <span>Assessed Value</span>
+                  <span>Tax Bill</span>
+                </div>
+                <div class="comp-row highlight-row">
+                  <span id="comp-your-address">Your Property</span>
+                  <span id="comp-sqft">—</span>
+                  <span id="comp-your-value" class="red-text">—</span>
+                  <span id="comp-your-tax" class="red-text">—</span>
+                </div>
+                <div class="comp-row">
+                  <span id="comp1-addr">123 Nearby St</span>
+                  <span id="comp1-sqft">1,850</span>
+                  <span id="comp1-val">—</span>
+                  <span id="comp1-tax">—</span>
+                </div>
+                <div class="comp-row">
+                  <span id="comp2-addr">456 Similar Ave</span>
+                  <span id="comp2-sqft">1,920</span>
+                  <span id="comp2-val">—</span>
+                  <span id="comp2-tax">—</span>
+                </div>
+                <div class="comp-row">
+                  <span id="comp3-addr">789 Market Blvd</span>
+                  <span id="comp3-sqft">1,790</span>
+                  <span id="comp3-val">—</span>
+                  <span id="comp3-tax">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: CTA -->
+          <div class="appeal-right">
+            <div class="cta-box">
+              <div class="cta-box-header">
+                <div class="cta-box-badge">Risk-Free Offer</div>
+                <h3>Let us fight this for you</h3>
+                <p>We handle everything — paperwork, hearings, negotiations. You just sit back and save.</p>
+              </div>
+
+              <div class="cta-price-block">
+                <div class="cta-price">$29.99</div>
+                <div class="cta-price-label">one-time flat fee</div>
+              </div>
+
+              <div class="cta-guarantee">
+                <div class="guarantee-icon">🛡️</div>
+                <div class="guarantee-text">
+                  <strong>Money-Back Guarantee</strong>
+                  If we don't save you more than $29.99, you pay <strong>nothing</strong>.
+                </div>
+              </div>
+
+              <ul class="cta-features">
+                <li>✓ Local Texas experts on your case</li>
+                <li>✓ We file all paperwork for you</li>
+                <li>✓ We attend hearings on your behalf</li>
+                <li>✓ Annual monitoring every year</li>
+                <li>✓ Real-time status updates</li>
+              </ul>
+
+              <a href="checkout.html" id="cta-proceed-btn" class="btn btn-primary btn-lg btn-block">
+                Start My Appeal — $29.99
+              </a>
+
+              <p class="cta-disclaimer">No credit card required to get started. Pay only after we review your case.</p>
+            </div>
+
+            <div class="timeline-box">
+              <h4>What happens next</h4>
+              <div class="timeline">
+                <div class="tl-item">
+                  <div class="tl-dot active"></div>
+                  <div class="tl-content">
+                    <strong>Today</strong>
+                    <span>We review your property and begin building your case</span>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot"></div>
+                  <div class="tl-content">
+                    <strong>Within 1–2 weeks</strong>
+                    <span>Your appeal is filed with the county assessor</span>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot"></div>
+                  <div class="tl-content">
+                    <strong>2–6 months</strong>
+                    <span>Hearing scheduled, we negotiate on your behalf</span>
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot"></div>
+                  <div class="tl-content">
+                    <strong>After decision</strong>
+                    <span>Savings confirmed and reflected in your tax bill</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM CTA BANNER -->
+    <section class="bottom-cta">
+      <div class="container">
+        <div class="bottom-cta-content">
+          <div>
+            <h3>Ready to stop overpaying?</h3>
+            <p>Estimated savings of <strong id="bottom-savings">$0</strong> are waiting for you.</p>
+          </div>
+          <a href="checkout.html" class="btn btn-white btn-lg">Start My Appeal — $29.99</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end results-page -->
+
+  <script src="results.js"></script>
+</body>
+</html>

@@ -1,3 +1,12 @@
+// Route to results page
+function goToResults(e) {
+  e.preventDefault();
+  const input = e.target.querySelector('input[type="text"]');
+  const address = input?.value.trim();
+  if (!address) { input?.focus(); return; }
+  window.location.href = 'results.html?address=' + encodeURIComponent(address);
+}
+
 // FAQ Toggle
 function toggleFaq(btn) {
   const answer = btn.nextElementSibling;

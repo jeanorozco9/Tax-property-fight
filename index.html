@@ -29,8 +29,8 @@
       <div class="hero-badge">86% Success Rate · No Upfront Cost</div>
       <h1>Stop Overpaying<br />on Property Taxes</h1>
       <p class="hero-sub">We fight your property tax assessment so you don't have to. If we don't save you money, you pay nothing.</p>
-      <form class="hero-form" onsubmit="handleSignup(event)">
-        <input type="text" placeholder="Enter your property address" class="hero-input" />
+      <form class="hero-form" onsubmit="goToResults(event)">
+        <input type="text" id="hero-address" placeholder="Enter your property address" class="hero-input" required />
         <button type="submit" class="btn btn-primary btn-lg">Check My Savings</button>
       </form>
       <p class="hero-note">Free to start · Takes 3 minutes · No obligation</p>
@@ -269,9 +269,8 @@
     <div class="container">
       <h2>Ready to Stop Overpaying?</h2>
       <p>Join thousands of homeowners who've already saved on their property taxes. It only takes 3 minutes to get started.</p>
-      <form class="cta-form" onsubmit="handleSignup(event)">
-        <input type="text" placeholder="Your property address" class="hero-input" />
-        <input type="email" placeholder="Your email address" class="hero-input" />
+      <form class="cta-form" onsubmit="goToResults(event)">
+        <input type="text" id="cta-address" placeholder="Your property address" class="hero-input" required />
         <button type="submit" class="btn btn-white btn-lg">Check My Savings →</button>
       </form>
       <p class="cta-note">No credit card required · Free evaluation · Cancel anytime</p>

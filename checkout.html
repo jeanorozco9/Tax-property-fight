@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Your Appeal · TaxFight</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">TaxFight</a>
+      <div class="checkout-steps">
+        <div class="checkout-step done">1. Analysis</div>
+        <div class="checkout-step-arrow">›</div>
+        <div class="checkout-step active">2. Your Info</div>
+        <div class="checkout-step-arrow">›</div>
+        <div class="checkout-step">3. Payment</div>
+        <div class="checkout-step-arrow">›</div>
+        <div class="checkout-step">4. Confirmed</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CHECKOUT -->
+  <div class="checkout-wrapper">
+    <div class="checkout-container">
+
+      <!-- LEFT: FORM -->
+      <div class="checkout-form-col">
+
+        <!-- STEP 2: CONTACT INFO -->
+        <div id="step-contact" class="checkout-step-panel">
+          <div class="step-header">
+            <div class="step-num">2</div>
+            <div>
+              <h2>Your Contact Information</h2>
+              <p>So we can keep you updated throughout your appeal.</p>
+            </div>
+          </div>
+
+          <form id="contact-form" onsubmit="goToPayment(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="firstName" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="lastName" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="email" placeholder="john@example.com" required />
+              <span class="form-hint">We'll send your case updates here.</span>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="phone" placeholder="(512) 555-0100" required />
+              <span class="form-hint">For urgent updates only. We won't spam you.</span>
+            </div>
+            <div class="form-group">
+              <label>Property Address</label>
+              <input type="text" id="propertyAddress" placeholder="1234 Main St, Austin, TX" required />
+            </div>
+            <div class="form-group">
+              <label>Are you the property owner?</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="owner" value="yes" checked /> Yes, I own this property
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="owner" value="no" /> No, I'm acting on behalf of the owner
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              Continue to Payment →
+            </button>
+          </form>
+        </div>
+
+        <!-- STEP 3: PAYMENT (hidden initially) -->
+        <div id="step-payment" class="checkout-step-panel" style="display:none;">
+          <div class="step-header">
+            <div class="step-num">3</div>
+            <div>
+              <h2>Payment</h2>
+              <p>Secure, one-time flat fee. You won't be charged until your case is reviewed.</p>
+            </div>
+          </div>
+
+          <div class="secure-badge">
+            <span>🔒</span> 256-bit SSL encryption · Secure checkout
+          </div>
+
+          <form id="payment-form" onsubmit="completeOrder(event)">
+            <div class="form-group">
+              <label>Cardholder Name</label>
+              <input type="text" id="cardName" placeholder="John Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Card Number</label>
+              <div class="card-input-wrap">
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456"
+                  maxlength="19" oninput="formatCard(this)" required />
+                <div class="card-icons">
+                  <span>VISA</span>
+                  <span>MC</span>
+                  <span>AMEX</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Expiration Date</label>
+                <input type="text" id="expiry" placeholder="MM / YY"
+                  maxlength="7" oninput="formatExpiry(this)" required />
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="text" id="cvv" placeholder="123" maxlength="4" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-option">
+                <input type="checkbox" id="terms" required />
+                I agree to the <a href="#" target="_blank">Terms of Service</a> and authorize TaxFight to file a property tax appeal on my behalf.
+              </label>
+            </div>
+
+            <button type="submit" id="pay-btn" class="btn btn-primary btn-lg btn-block">
+              🔒 Pay $29.99 & Start My Appeal
+            </button>
+            <p class="back-link"><a href="#" onclick="goBack()">← Back to contact info</a></p>
+          </form>
+        </div>
+
+        <!-- STEP 4: CONFIRMATION (hidden initially) -->
+        <div id="step-confirm" class="checkout-step-panel" style="display:none;">
+          <div class="confirm-screen">
+            <div class="confirm-icon">✓</div>
+            <h2>You're in! Your appeal has been filed.</h2>
+            <p id="confirm-message">We've received your information and will begin building your case immediately.</p>
+
+            <div class="confirm-details">
+              <div class="confirm-row">
+                <span>Property</span>
+                <span id="confirm-address">—</span>
+              </div>
+              <div class="confirm-row">
+                <span>Name</span>
+                <span id="confirm-name">—</span>
+              </div>
+              <div class="confirm-row">
+                <span>Email</span>
+                <span id="confirm-email">—</span>
+              </div>
+              <div class="confirm-row">
+                <span>Amount Charged</span>
+                <span class="green-text">$29.99</span>
+              </div>
+              <div class="confirm-row">
+                <span>Guarantee</span>
+                <span class="green-text">Free if we don't save you more than $29.99</span>
+              </div>
+            </div>
+
+            <div class="confirm-next-steps">
+              <h4>What happens next</h4>
+              <div class="next-step-item">
+                <div class="ns-icon">📧</div>
+                <div>
+                  <strong>Check your email</strong>
+                  <span>We sent a confirmation with your case details.</span>
+                </div>
+              </div>
+              <div class="next-step-item">
+                <div class="ns-icon">🔍</div>
+                <div>
+                  <strong>Case review begins today</strong>
+                  <span>Our local Texas experts will review your property within 24–48 hours.</span>
+                </div>
+              </div>
+              <div class="next-step-item">
+                <div class="ns-icon">📋</div>
+                <div>
+                  <strong>Appeal filed within 2 weeks</strong>
+                  <span>We'll notify you the moment your appeal is submitted to your county.</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="index.html" class="btn btn-outline btn-lg" style="margin-top:24px; display:inline-block;">
+              Back to Home
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: ORDER SUMMARY -->
+      <div class="order-summary-col" id="order-summary">
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+
+          <div class="order-property">
+            <div class="order-property-icon">🏠</div>
+            <div>
+              <div class="order-property-label">Property</div>
+              <div class="order-property-address" id="summary-address">Loading...</div>
+            </div>
+          </div>
+
+          <div class="order-items">
+            <div class="order-item">
+              <span>Property Tax Appeal Service</span>
+              <span>$29.99</span>
+            </div>
+            <div class="order-item sub">
+              <span>Local Texas expert review</span>
+              <span>Included</span>
+            </div>
+            <div class="order-item sub">
+              <span>All paperwork & filing</span>
+              <span>Included</span>
+            </div>
+            <div class="order-item sub">
+              <span>Hearing representation</span>
+              <span>Included</span>
+            </div>
+            <div class="order-item sub">
+              <span>Annual monitoring</span>
+              <span>Included</span>
+            </div>
+          </div>
+
+          <div class="order-total">
+            <span>Total</span>
+            <span>$29.99</span>
+          </div>
+
+          <div class="order-savings-estimate">
+            <div class="ose-label">Your estimated savings</div>
+            <div class="ose-value" id="summary-savings">—</div>
+            <div class="ose-sub">if appeal is successful</div>
+          </div>
+
+          <div class="order-guarantee">
+            <div class="og-icon">🛡️</div>
+            <div class="og-text">
+              <strong>Risk-Free Guarantee</strong>
+              If we don't save you more than $29.99, you get a full refund.
+            </div>
+          </div>
+
+          <div class="trust-badges">
+            <div class="trust-badge">🔒 Secure Payment</div>
+            <div class="trust-badge">⭐ Local Experts</div>
+            <div class="trust-badge">✓ No Hidden Fees</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
